@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student — Connectova</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/student.css" />
+  <script defer src="../scripts/student.js"></script>
+  <script defer src="../scripts/main.js"></script>
+</head>
+<body>
+  <header>
+    <div class="title"><h1>Connectova</h1><p>Student Dashboard</p></div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="#" id="ai-toggle">Ask AI Tutor</a>
+      <a href="#" id="logout">Logout</a>
+      <a href="remove.html" id="deleteAccount" style="color:#ffb3b3;">Remove Account</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2><p style ="color:black;">Welcome, Student!</p></h2>
+      <p>Choose an area to continue.</p>
+
+      <div class="dashboard-container">
+        <div class="dashboard-box">
+          <h3><p style ="color:black; font-size: 18px;">Study Materials</p></h3>
+          <p>From your teacher and AI Tutor.</p>
+          <a class="btn" href="student_courses/student_study_materials.html">Open</a>
+        </div>
+
+        <div class="dashboard-box">
+          <h3><p style ="color:black; font-size: 18px;">Quizzes</p></h3>
+          <p>Teacher quizzes and AI practice tests.</p>
+          <a class="btn" href="student_courses/student_quiz.html">Open</a>
+        </div>
+
+        <div class="dashboard-box">
+          <h3><p style ="color:black; font-size: 18px;">AI Tutor Courses</p></h3>
+          <p>Interactive lessons: Maths & English.</p>
+          <a class="btn" href="student_courses/math.html">Mathematics</a>
+          <a class="btn" href="student_courses/english.html" style="margin-left:8px;">English</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Connectova</footer>
+</body>
+</html>

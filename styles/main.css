@@ -1,0 +1,157 @@
+/* ========== MAIN SITE STYLES (index + home) ========== */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom right, #c9e6ff, #eaf3ff);
+  color: #002244;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header .title {
+  text-align: center;
+}
+
+header .title h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header .title p {
+  margin: 0;
+  font-size: 14px;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #d9ebff;
+}
+
+/* Sections */
+main {
+  flex: 1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.box {
+  background: #ffffff80;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.box h3 {
+  margin-bottom: 10px;
+}
+
+.icon {
+  font-size: 40px;
+}
+
+.btn {
+  background-color: #4a90e2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #357ac9;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px;
+  margin-top: auto;
+  font-size: 14px;
+}
+
+.quiz-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quiz-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.quiz-title {
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.quiz-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #005fa3;
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  background-color: #d9534f;
+}
+
+.remove-btn:hover {
+  background-color: #c9302c;
+}

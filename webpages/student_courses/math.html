@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Tutor — Mathematics — Connectova</title>
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/student.css" />
+  <link rel="stylesheet" href="../../styles/chatbot.css" />
+  <script defer src="../../scripts/course.js"></script>
+  <script defer src="../../scripts/chatbot.js"></script>
+</head>
+<body>
+  <header>
+    <div class="title"><h1>Connectova</h1><p>AI Tutor — Mathematics</p></div>
+    <nav>
+      <a href="../student.html">Back</a>
+      <a href="../home.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2><p style ="color:black;">Mathematics — Geometry, Arithmetic & Algebra</p></h2>
+      <p>Short interactive lessons by the AI Tutor. Click Start Course to begin.</p>
+      <div style="margin-top:18px;">
+        <button id="startCourse" class="btn"><a href = "math_topics.html">Start Course</a></button>
+      </div>
+
+      <div class="tutor-area" style="margin-top:24px; display:flex; justify-content:center; gap:20px; align-items:flex-end;">
+        <div id="tutorAvatar" class="tutor-avatar" style="width:120px;height:120px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;border:4px solid #0e66b1;">
+          <div style="text-align:center;">
+            <div style="font-size:36px;">😊</div>
+          </div>
+        </div>
+
+        <div id="speechBubble" class="speech-bubble" style="display:none;max-width:420px;background:#fff;padding:16px;border-radius:14px;color:#06223a;"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Connectova</footer>
+
+  <script>
+    // initialize course & chatbot
+    document.addEventListener('DOMContentLoaded', () => {
+      initCourse({
+        startBtnId: 'startCourse',
+        avatarId: 'tutorAvatar',
+        bubbleId: 'speechBubble',
+        lessons: [
+          "Hi! Let's warm up with Fractions.",
+          "A fraction shows part of a whole. Example: 1/2 means one of two equal parts.",
+          "Try adding: 1/4 + 2/4 = 3/4. Great!",
+          "Next we'll look at simple equations."
+        ],
+        speak: true
+      });
+
+      initChatbot({
+        endpoint: '/api/gemini',
+        role: 'student',
+        subject: 'mathematics',
+        container: document.body
+      });
+    });
+  </script>
+</body>
+</html>

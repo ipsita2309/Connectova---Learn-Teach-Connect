@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Remove Account — Connectova</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+  <script defer src="../scripts/main.js"></script>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <h1>Connectova</h1>
+      <p>Learn · Teach · Connect</p>
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>Delete Account</h2>
+      <p>This will permanently remove your account (local demo only).</p>
+      <button class="btn" id="confirmRemove">Remove Account</button>
+    </section>
+  </main>
+
+  <footer>© 2025 Connectova</footer>
+
+  <script>
+    document.getElementById('confirmRemove').addEventListener('click', () => {
+      if (!confirm('Are you sure? This will remove your local account.')) return;
+      const email = localStorage.getItem('loggedInUser');
+      let users = JSON.parse(localStorage.getItem('users') || '[]');
+      users = users.filter(u => u.email !== email);
+      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.removeItem('loggedInUser');
+      localStorage.removeItem('userRole');
+      alert('Account removed.');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Create Quiz — Teacher — Connectova</title>
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/teacher.css" />
+  <script defer src="../../scripts/teacher_create_quiz.js"></script>
+</head>
+<body>
+  <header>
+    <div class="title"><h1>Connectova</h1><p>Teacher — Create Quiz</p></div>
+    <nav>
+      <a href="../teacher.html">Back</a>
+      <a href="../home.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>Create a New Quiz</h2>
+      <p>Embed your Google Form quiz below:</p>
+
+      <div class="dashboard-box" style="max-width:600px;margin:auto;">
+        <label>Quiz Title:</label><br>
+        <input type="text" id="quizTitle" placeholder="Enter quiz title"><br><br>
+
+        <label>Google Form Link:</label><br>
+        <input type="text" id="quizLink" placeholder="Paste Google Form link"><br><br>
+
+        <button id="uploadQuizBtn">Upload Quiz</button>
+        <p id="statusMsg" style="color:green;margin-top:8px;"></p>
+      </div>
+
+      <div class="dashboard-box" style="max-width:600px;margin:20px auto;">
+        <h3>Uploaded Quizzes</h3>
+        <ul id="uploadedList" style="list-style:none;padding:0;"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Connectova</footer>
+</body>
+</html>

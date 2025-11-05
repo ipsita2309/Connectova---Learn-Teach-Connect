@@ -1,0 +1,208 @@
+/* student.css - for student dashboard and tutor pages */
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom right, #c9e6ff, #eaf3ff);
+  color: #002244;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+main {
+  padding: 20px;
+}
+
+.section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #fffcf2;
+}
+
+.grid-2 {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.dashboard-box {
+  background: #ffffffc0;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.dashboard-box h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: black;
+}
+
+.dashboard-box p {
+  font-size: 14px;
+}
+
+.dashboard-box a {
+  display: inline-block;
+  background: #4a90e2;
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.dashboard-box a:hover {
+  background: #357ac9;
+}
+
+.btn {
+  background: #00aaff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 15px;
+}
+
+.btn:hover {
+  background: #0088cc;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tutor-wrapper {
+  max-width: 1100px;
+  margin: 18px auto;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+}
+
+.content-box {
+  background: rgba(255,255,255,0.06);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.topic-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.topic-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 6px;
+  border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+
+.speech-bubble {
+  background: #f7fbff;
+  color: #06223a;
+  padding: 12px;
+  border-radius: 12px;
+  min-height: 80px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.speech-bubble span {
+  padding: 0 2px;
+  transition: background 0.15s ease;
+  border-radius: 4px;
+}
+
+.avatar {
+  width: 180px;
+  height: 220px;
+  background: linear-gradient(180deg,#fff1f0,#ffeef0);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.face {
+  text-align: center;
+}
+
+.eye {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #06223a;
+  border-radius: 50%;
+  margin: 8px 6px;
+}
+
+.mouth {
+  width: 56px;
+  height: 18px;
+  background: #06223a;
+  border-radius: 0 0 28px 28px;
+  margin-top: 12px;
+  transform-origin: center top;
+  transition: transform 0.06s linear;
+}
+
+.avatar.speaking .mouth {
+  animation: mouth-move 0.12s infinite;
+}
+
+@keyframes mouth-move {
+  0% { transform: scaleY(1) }
+  25% { transform: scaleY(1.6) }
+  50% { transform: scaleY(0.8) }
+  75% { transform: scaleY(1.3) }
+  100% { transform: scaleY(1) }
+}
+
+footer {
+  text-align: center;
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px;
+  margin-top: auto;
+  font-size: 14px;
+}

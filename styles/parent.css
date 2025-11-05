@@ -1,0 +1,47 @@
+/* ========== PARENT DASHBOARD STYLES ========== */
+@import url('main.css');
+
+main {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.dashboard-box {
+  background: #ffffffc0;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.dashboard-box h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.dashboard-box p {
+  font-size: 14px;
+}
+
+.dashboard-box a {
+  display: inline-block;
+  background: #4a90e2;
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.dashboard-box a:hover {
+  background: #357ac9;
+}

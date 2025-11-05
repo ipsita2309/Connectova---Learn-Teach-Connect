@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Tutor — Student | Connectova</title>
+
+  <!-- ✅ Correct paths (two levels up!) -->
+  <link rel="stylesheet" href="../../styles/main.css" />
+  <link rel="stylesheet" href="../../styles/parent.css" />
+
+  <script src="../../scripts/tutor_parent.js" defer></script>
+
+  <style>
+   
+    /* tutor layout */
+    .tutor-wrapper {
+      max-width: 1100px;
+      margin: 18px auto;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 20px;
+    }
+
+    .content-box {
+      background: rgba(255,255,255,0.06);
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .topic-list { list-style: none; padding: 0; margin: 0; }
+
+    .topic-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 6px;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+
+    .btn {
+      background: #00aaff;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 14px;
+      margin-left: 6px;
+    }
+
+    .btn:hover {
+      background: #0088cc;
+    }
+
+    .speech-bubble {
+      background: #f7fbff;
+      color: #06223a;
+      padding: 12px;
+      border-radius: 12px;
+      min-height: 70px;
+      margin-bottom: 12px;
+    }
+
+    .avatar {
+      width: 180px;
+      height: 220px;
+      background: linear-gradient(180deg, #fff1f0, #ffeef0);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .face { text-align: center; }
+    .eye {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #06223a;
+      border-radius: 50%;
+      margin: 8px 6px;
+    }
+
+    .mouth {
+      width: 56px;
+      height: 18px;
+      background: #06223a;
+      border-radius: 0 0 28px 28px;
+      margin-top: 12px;
+      transform-origin: center top;
+      transition: transform 0.06s linear;
+    }
+
+    .avatar.speaking .mouth {
+      animation: mouth-move 0.12s infinite;
+    }
+
+    @keyframes mouth-move {
+      0% { transform: scaleY(1) }
+      25% { transform: scaleY(1.6) }
+      50% { transform: scaleY(0.8) }
+      75% { transform: scaleY(1.3) }
+      100% { transform: scaleY(1) }
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <h1>Connectova</h1>
+      <p>AI Tutor — Mathematics</p>
+    </div>
+    <nav>
+      <a href="child_psychology.html">Back</a>
+      <a href="../home.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="tutor-wrapper">
+      <div class="content-box">
+        <h2><p style ="color:black;">Child Psychology Topics</p></h2>
+        <ul class="topic-list" id="parent-cp-topics"></ul>
+        <p style="margin-top:12px;">Click a topic to get a brief idea about it.</p>
+      </div>
+
+      <div class="content-box">
+        <div class="speech-bubble" id="parent-speech">
+          AI tutor ready. Click a topic to get a briefing about it.
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <div class="avatar" id="parent-avatar">
+            <div class="face">
+              <div style="font-weight:700;color:#06223a;font-size:20px;">Tutor</div>
+              <div><span class="eye"></span><span class="eye"></span></div>
+              <div class="mouth" id="parent-mouth"></div>
+            </div>
+          </div>
+          <button id="parent-replay" class="btn">Replay Last</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>© 2025 Connectova</footer>
+
+  <script>
+    const topics = [
+      "Understanding Emotions",
+      "Positive Reinforcement",
+      "Dealing with Tantrums",
+      "Building Confidence"
+    ];
+
+    const topicList = document.getElementById("parent-cp-topics");
+    const speech = document.getElementById("parent-speech");
+    const avatar = document.getElementById("parent-avatar");
+    const mouth = document.getElementById("parent-mouth");
+
+    let isPaused = false;
+
+    topics.forEach(topic => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <span>${topic}</span>
+        <div>
+          <button class="btn explain-btn">Explain</button>
+          <button class="btn pause-btn">Pause</button>
+          <button class="btn start-btn">Start Topic</button>
+        </div>
+      `;
+      topicList.appendChild(li);
+
+      const explainBtn = li.querySelector(".explain-btn");
+      const pauseBtn = li.querySelector(".pause-btn");
+      const startBtn = li.querySelector(".start-btn");
+
+      explainBtn.addEventListener("click", () => {
+        if (isPaused) return;
+        avatar.classList.add("speaking");
+        speech.textContent = `Here's a brief explanation on ${topic}. (AI Tutor is explaining...)`;
+        setTimeout(() => avatar.classList.remove("speaking"), 3500);
+      });
+
+      pauseBtn.addEventListener("click", () => {
+        isPaused = true;
+        avatar.classList.remove("speaking");
+        speech.textContent = "⏸️ Explanation paused.";
+        setTimeout(() => { isPaused = false; }, 3000);
+      });
+
+      startBtn.addEventListener("click", () => {
+        speech.textContent = `Starting ${topic}... (Feature coming soon!)`;
+      });
+    });
+
+    document.getElementById("parent-replay").addEventListener("click", () => {
+      speech.textContent = "Replaying last explanation...";
+      avatar.classList.add("speaking");
+      setTimeout(() => avatar.classList.remove("speaking"), 3000);
+    });
+  </script>
+</body>
+</html>

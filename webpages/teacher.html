@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teacher — Connectova</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/teacher.css" />
+  <script defer src="../scripts/teacher.js"></script>
+  <script defer src="../scripts/main.js"></script>
+</head>
+<body>
+  <header>
+    <div class="title"><h1>Connectova</h1><p>Teacher Dashboard</p></div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="teacher_courses/teacher_upload_material.html">Upload</a>
+      <a href="#" id="ai-toggle">Ask AI Tutor</a>
+      <a href="#" id="logout">Logout</a>
+      <a href="remove.html" id="deleteAccount" style="color:#ffb3b3;">Remove Account</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>Welcome, Teacher</h2>
+      <p>Upload study materials and create quizzes for your students.</p>
+
+      <div style="display:flex;gap:20px;justify-content:center;margin-top:18px;flex-wrap:wrap;">
+        <div class="dashboard-box">
+          <h3>Upload Materials</h3>
+          <p>Upload PDFs, slides for students.</p>
+          <a class="btn" href="teacher_courses/teacher_upload_material.html">Upload</a>
+        </div>
+
+        <div class="dashboard-box">
+          <h3>Create Quizzes for Students</h3>
+          <p>Embed Google forms of quizzes for students.</p>
+          <a class="btn" href="teacher_courses/create_quiz.html">Create Quiz</a>
+        </div>
+
+        <div class="dashboard-box">
+          <h3>View Students' Progress</h3>
+          <p>View scores of students and share with parents.</p>
+          <a class="btn" href="teacher_courses/teacher_view_studentprogress.html">View</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;justify-content:center;margin-top:18px;flex-wrap:wrap;">
+        <div class="dashboard-box">
+          <h3>AI Tutor Quizzes for Teachers</h3>
+          <p>Sharpen your skills with AI Tutor Quizzes.</p>
+          <a class="btn" href="teacher_courses/teacher_aitutor_quiz.html">Attempt Quiz</a>
+        </div>
+        <div class="dashboard-box">
+          <h3>AI Tutor Courses for Teachers</h3>
+          <p>Teaching Pedagogy & Classroom Tech.</p>
+          <a class="btn" href="teacher_courses/ai_teaching_tools.html">Teaching Tools</a>
+          <a class="btn" href="teacher_courses/classroom_management.html" style="margin-left:8px;">Classroom Mgmt</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Connectova</footer>
+</body>
+</html>
