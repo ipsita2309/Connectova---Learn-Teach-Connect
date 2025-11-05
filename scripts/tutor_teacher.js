@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const map = {
     'ai_teaching_tools_topics.html': { listId:'teacher-ai-topics', data:'ai' },
-    'classroom_management.html': { listId:'teacher-class-topics', data:'class' }
+    'classroom_management_topics.html': { listId:'teacher-class-topics', data:'class' }
   };
 
   const cfg = map[page];
