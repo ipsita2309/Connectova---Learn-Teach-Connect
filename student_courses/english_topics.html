@@ -6,10 +6,10 @@
   <title>AI Tutor — Student | Connectova</title>
 
   <!-- ✅ Correct paths (two levels up!) -->
-  <link rel="stylesheet" href="../../styles/main.css" />
-  <link rel="stylesheet" href="../../styles/student.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/student.css" />
 
-  <script src="../../scripts/tutor_student.js" defer></script>
+  <script src="../scripts/tutor_student.js" defer></script>
 
   <style>
    
@@ -118,7 +118,7 @@
       <p>AI Tutor — Mathematics</p>
     </div>
     <nav>
-      <a href="math.html">Back</a>
+      <a href="english.html">Back</a>
       <a href="../home.html">Home</a>
     </nav>
   </header>
@@ -126,8 +126,8 @@
   <main>
     <div class="tutor-wrapper">
       <div class="content-box">
-        <h2><p style ="color:black;">Mathematics Topics</p></h2>
-        <ul class="topic-list" id="student-math-topics"></ul>
+        <h2><p style ="color:black;">English Topics</p></h2>
+        <ul class="topic-list" id="student-eng-topics"></ul>
         <p style="margin-top:12px;">Click a topic to get a brief idea about it.</p>
       </div>
 
@@ -154,14 +154,13 @@
 
   <script>
     const topics = [
-      "Fractions and Decimals",
-      "Algebraic Expressions",
-      "Geometry Basics",
-      "Trigonometry",
-      "Probability and Statistics"
+      "Parts of Speech",
+      "Sentence Structure",
+      "Vocabulary Building",
+      "Paragraph Writing"
     ];
 
-    const topicList = document.getElementById("student-math-topics");
+    const topicList = document.getElementById("student-eng-topics");
     const speech = document.getElementById("student-speech");
     const avatar = document.getElementById("student-avatar");
     const mouth = document.getElementById("student-mouth");

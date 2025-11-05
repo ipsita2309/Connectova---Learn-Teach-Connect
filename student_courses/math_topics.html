@@ -6,10 +6,10 @@
   <title>AI Tutor — Student | Connectova</title>
 
   <!-- ✅ Correct paths (two levels up!) -->
-  <link rel="stylesheet" href="../../styles/main.css" />
-  <link rel="stylesheet" href="../../styles/parent.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/student.css" />
 
-  <script src="../../scripts/tutor_parent.js" defer></script>
+  <script src="../scripts/tutor_student.js" defer></script>
 
   <style>
    
@@ -118,7 +118,7 @@
       <p>AI Tutor — Mathematics</p>
     </div>
     <nav>
-      <a href="digital_safety.html">Back</a>
+      <a href="math.html">Back</a>
       <a href="../home.html">Home</a>
     </nav>
   </header>
@@ -126,25 +126,25 @@
   <main>
     <div class="tutor-wrapper">
       <div class="content-box">
-        <h2><p style ="color:black;">Digital Safety Topics</p></h2>
-        <ul class="topic-list" id="parent-ds-topics"></ul>
+        <h2><p style ="color:black;">Mathematics Topics</p></h2>
+        <ul class="topic-list" id="student-math-topics"></ul>
         <p style="margin-top:12px;">Click a topic to get a brief idea about it.</p>
       </div>
 
       <div class="content-box">
-        <div class="speech-bubble" id="parent-speech">
+        <div class="speech-bubble" id="student-speech">
           AI tutor ready. Click a topic to get a briefing about it.
         </div>
 
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-          <div class="avatar" id="parent-avatar">
+          <div class="avatar" id="student-avatar">
             <div class="face">
               <div style="font-weight:700;color:#06223a;font-size:20px;">Tutor</div>
               <div><span class="eye"></span><span class="eye"></span></div>
-              <div class="mouth" id="parent-mouth"></div>
+              <div class="mouth" id="student-mouth"></div>
             </div>
           </div>
-          <button id="parent-replay" class="btn">Replay Last</button>
+          <button id="student-replay" class="btn">Replay Last</button>
         </div>
       </div>
     </div>
@@ -154,16 +154,17 @@
 
   <script>
     const topics = [
-      "Online Privacy",
-      "Safe Browsing",
-      "Cyberbullying",
-      "Screen Time Balance"
+      "Fractions and Decimals",
+      "Algebraic Expressions",
+      "Geometry Basics",
+      "Trigonometry",
+      "Probability and Statistics"
     ];
 
-    const topicList = document.getElementById("parent-ds-topics");
-    const speech = document.getElementById("parent-speech");
-    const avatar = document.getElementById("parent-avatar");
-    const mouth = document.getElementById("parent-mouth");
+    const topicList = document.getElementById("student-math-topics");
+    const speech = document.getElementById("student-speech");
+    const avatar = document.getElementById("student-avatar");
+    const mouth = document.getElementById("student-mouth");
 
     let isPaused = false;
 
@@ -202,7 +203,7 @@
       });
     });
 
-    document.getElementById("parent-replay").addEventListener("click", () => {
+    document.getElementById("student-replay").addEventListener("click", () => {
       speech.textContent = "Replaying last explanation...";
       avatar.classList.add("speaking");
       setTimeout(() => avatar.classList.remove("speaking"), 3000);
