@@ -14,8 +14,11 @@
       <p>Learn · Teach · Connect</p>
     </div>
     <nav>
-      <a href="#" id="logout">Logout</a>
-      <a href="#" id="deleteAccount" style="color:#ffb3b3;">Remove Account</a>
+      <a href="login.html" id="logout">Logout</a>
+      <!-- Navigate to remove.html instead of deleting directly -->
+      <a href="remove.html" id="deleteAccount" style="color:#ffb3b3; font-size:16px; text-decoration:none; cursor:pointer;">
+        Remove Account
+      </a>
     </nav>
   </header>
 
@@ -31,21 +34,27 @@
           <div class="icon">🧑‍🎓</div>
           <h3>Student Dashboard</h3>
           <p>Access courses, AI quizzes and progress.</p>
-          <div style="margin-top:12px;"><button class="btn" id="enterStudent">Enter</button></div>
+          <div style="margin-top:12px;">
+            <button class="btn" id="enterStudent">Enter</button>
+          </div>
         </div>
 
         <div class="box" id="teacherBox">
           <div class="icon">👩‍🏫</div>
           <h3>Teacher Dashboard</h3>
           <p>Upload materials, create quizzes, and view submissions.</p>
-          <div style="margin-top:12px;"><button class="btn" id="enterTeacher">Enter</button></div>
+          <div style="margin-top:12px;">
+            <button class="btn" id="enterTeacher">Enter</button>
+          </div>
         </div>
 
         <div class="box" id="parentBox">
           <div class="icon">👨‍👩‍👧</div>
           <h3>Parent Dashboard</h3>
           <p>Monitor student progress and message teachers.</p>
-          <div style="margin-top:12px;"><button class="btn" id="enterParent">Enter</button></div>
+          <div style="margin-top:12px;">
+            <button class="btn" id="enterParent">Enter</button>
+          </div>
         </div>
       </div>
     </section>
@@ -54,7 +63,6 @@
   <footer>© 2025 Connectova — Your learning hub</footer>
 
   <script>
-    // when loaded, check login
     document.addEventListener('DOMContentLoaded', () => {
       const email = localStorage.getItem('loggedInUser');
       const role = localStorage.getItem('userRole');
