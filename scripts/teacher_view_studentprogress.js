@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("progressContainer");
+  const quizTitle = "English Quiz";
+  const sheetLink = "https://docs.google.com/spreadsheets/d/1y-U_23QEXS65VrZ9mpvj9sq_xKSgn8EKUkxS68DMhPo/edit?usp=sharing";
 
-  // Function to create a blank quiz box (original state)
+  const removedQuizzes = JSON.parse(localStorage.getItem("removedQuizzes") || "[]");
+
   function createBlankBox(title) {
     const box = document.createElement("div");
     box.classList.add("dashboard-box");
@@ -13,14 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return box;
   }
 
-  // Single quiz info
-  const quizTitle = "English Quiz";
-  const sheetLink = "https://docs.google.com/spreadsheets/d/1y-U_23QEXS65VrZ9mpvj9sq_xKSgn8EKUkxS68DMhPo/edit?usp=sharing";
-
-  // Initially create the quiz box
-  const box = createBlankBox(quizTitle);
-
-  // Add actual quiz content with Share and Remove buttons
   function populateQuizBox(box) {
     box.innerHTML = `
       <h3><p style="color:black;font-size:18px;">${quizTitle}</p></h3>
@@ -46,26 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // Share functionality
     const sharedReports = JSON.parse(localStorage.getItem("sharedReports")) || [];
+
     box.querySelector(".share-btn").addEventListener("click", () => {
-      const report = {
-        title: quizTitle,
-        score: "Score not tracked",
-        date: new Date().toLocaleString(),
-        link: sheetLink
-      };
+      const report = { title: quizTitle, score: "Score not tracked", date: new Date().toLocaleString(), link: sheetLink };
       const updatedReports = sharedReports.filter(r => r.title !== quizTitle);
       updatedReports.push(report);
       localStorage.setItem("sharedReports", JSON.stringify(updatedReports));
       alert("Report shared with parent successfully!");
     });
 
-    // Remove functionality
     box.querySelector(".remove-btn").addEventListener("click", () => {
-      const updatedReports = sharedReports.filter(r => r.title !== quizTitle);
-      localStorage.setItem("sharedReports", JSON.stringify(updatedReports));
-      // Reset to original empty box
+      localStorage.setItem("removedQuizzes", JSON.stringify([...removedQuizzes, quizTitle]));
+      localStorage.setItem("sharedReports", JSON.stringify(sharedReports.filter(r => r.title !== quizTitle)));
       box.innerHTML = `
         <h3><p style="color:black;font-size:18px;">${quizTitle}</p></h3>
         <p>No submissions yet. Add a quiz to view student progress here.</p>
@@ -74,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Populate the quiz box initially
-  populateQuizBox(box);
+  // Render
+  const box = createBlankBox(quizTitle);
+  if (!removedQuizzes.includes(quizTitle)) populateQuizBox(box);
 });
