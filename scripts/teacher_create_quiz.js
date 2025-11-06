@@ -8,6 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadQuizzes() {
     uploadedList.innerHTML = "";
     const quizzes = JSON.parse(localStorage.getItem("teacherQuizzes") || "[]");
+
+    // Update quizUploaded flag for student progress page
+    if (quizzes.length > 0) {
+      localStorage.setItem("quizUploaded", "true");
+    } else {
+      localStorage.removeItem("quizUploaded");
+    }
+
     quizzes.forEach((quiz, index) => {
       const li = document.createElement("li");
       li.style.margin = "15px 0";
@@ -30,8 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const quizzes = JSON.parse(localStorage.getItem("teacherQuizzes") || "[]");
         quizzes.splice(idx, 1);
         localStorage.setItem("teacherQuizzes", JSON.stringify(quizzes));
+
+        // Update flag after removal
+        if (quizzes.length === 0) {
+          localStorage.removeItem("quizUploaded");
+        }
+
         loadQuizzes();
         statusMsg.textContent = "Quiz removed successfully!";
+        statusMsg.style.color = "orange";
       });
     });
   }
@@ -49,6 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const quizzes = JSON.parse(localStorage.getItem("teacherQuizzes") || "[]");
     quizzes.push({ title, link });
     localStorage.setItem("teacherQuizzes", JSON.stringify(quizzes));
+
+    // Mark quiz as uploaded for student progress page
+    localStorage.setItem("quizUploaded", "true");
 
     titleInput.value = "";
     linkInput.value = "";

@@ -1,30 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("progressContainer");
+  container.innerHTML = "";
 
-  // Key for localStorage
-  const removalKey = "studentProgressRemoved";
+  const quizUploaded = localStorage.getItem("quizUploaded");
+  const quizzes = JSON.parse(localStorage.getItem("teacherQuizzes") || "[]");
 
-  // Check if the quiz was removed previously
-  const isRemoved = JSON.parse(localStorage.getItem(removalKey)) || false;
-
-  function showNoResultMessage() {
-    container.innerHTML = `<p style="color:black; font-size:16px;">No result to be displayed yet</p>`;
+  if (!quizUploaded || quizzes.length === 0) {
+    container.innerHTML = `<p style="color:black;font-size:16px;">No results displayed yet</p>`;
+    return;
   }
 
-  if (isRemoved) {
-    showNoResultMessage();
-    return; // Do not display the quiz box
-  }
-
-  // Quiz info
-  const quizTitle = "English Quiz";
-  const sheetLink = "https://docs.google.com/spreadsheets/d/1y-U_23QEXS65VrZ9mpvj9sq_xKSgn8EKUkxS68DMhPo/edit?usp=sharing";
-
+  const quiz = quizzes[0]; // assuming one quiz at a time
   const box = document.createElement("div");
   box.classList.add("dashboard-box");
   box.innerHTML = `
-    <h3><p style="color:black;font-size:18px;">${quizTitle}</p></h3>
-    <p>Access submissions: <a href="${sheetLink}" target="_blank">Open Google Sheet</a></p>
+    <h3><p style="color:black;font-size:18px;">${quiz.title}</p></h3>
+    <p>Access submissions: <a href="${quiz.link}" target="_blank">Open Google Sheet</a></p>
     <button class="share-btn" style="
       background-color: #1d8560ff; 
       color: white; 
@@ -35,39 +26,37 @@ document.addEventListener("DOMContentLoaded", () => {
       margin-top: 10px;
     ">Share with Parent</button>
     <button class="remove-btn" style="
-      background-color: #ff4c4c; 
-      color: white; 
-      border: none; 
-      padding: 8px 12px; 
-      border-radius: 5px; 
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
       cursor: pointer;
+      margin-left: 8px;
       margin-top: 10px;
-      margin-left: 10px;
     ">Remove</button>
   `;
   container.appendChild(box);
 
   // Share button
-  const sharedReports = JSON.parse(localStorage.getItem("sharedReports")) || [];
   box.querySelector(".share-btn").addEventListener("click", () => {
+    const sharedReports = JSON.parse(localStorage.getItem("sharedReports")) || [];
     const report = {
-      title: quizTitle,
+      title: quiz.title,
       score: "Score not tracked",
       date: new Date().toLocaleString(),
-      link: sheetLink
+      link: quiz.link
     };
-
-    const updatedReports = sharedReports.filter(r => r.title !== quizTitle);
+    const updatedReports = sharedReports.filter(r => r.title !== quiz.title);
     updatedReports.push(report);
     localStorage.setItem("sharedReports", JSON.stringify(updatedReports));
-
     alert("Report shared with parent successfully!");
   });
 
   // Remove button
   box.querySelector(".remove-btn").addEventListener("click", () => {
-    // Persist removal in localStorage
-    localStorage.setItem(removalKey, true);
-    showNoResultMessage();
+    localStorage.removeItem("quizUploaded");
+    localStorage.setItem("teacherQuizzes", JSON.stringify([]));
+    container.innerHTML = `<p style="color:black;font-size:16px;">No results displayed yet</p>`;
   });
 });
