@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const uploadBtn = document.getElementById("uploadQuizBtn");
   const titleInput = document.getElementById("quizTitle");
-  const linkInput = document.getElementById("quizLink");
+  const formLinkInput = document.getElementById("quizLink"); // form link input
+  const sheetLinkInput = document.getElementById("sheetLink"); // new input for sheet link
   const statusMsg = document.getElementById("statusMsg");
   const uploadedList = document.getElementById("uploadedList");
 
@@ -23,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="quiz-card">
           <strong class="quiz-title">${quiz.title}</strong>
           <div class="quiz-actions">
-            <a href="${quiz.link}" target="_blank" class="btn preview-btn">Preview Form</a>
+            <a href="${quiz.link}" target="_blank" class="btn preview-btn">Preview Quiz (Form)</a>
+            <a href="${quiz.sheetLink}" target="_blank" class="btn" style="background:#1d8560;color:white;">View Sheet</a>
             <button class="btn remove-btn" data-index="${index}">Remove Quiz</button>
           </div>
         </div>
@@ -53,23 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   uploadBtn.addEventListener("click", () => {
     const title = titleInput.value.trim();
-    const link = linkInput.value.trim();
+    const formLink = formLinkInput.value.trim();
+    const sheetLink = sheetLinkInput.value.trim();
 
-    if (!title || !link) {
+    if (!title || !formLink || !sheetLink) {
       statusMsg.style.color = "red";
-      statusMsg.textContent = "Please enter both title and link.";
+      statusMsg.textContent = "Please enter title, form link, and sheet link.";
       return;
     }
 
     const quizzes = JSON.parse(localStorage.getItem("teacherQuizzes") || "[]");
-    quizzes.push({ title, link });
+    quizzes.push({ title, link: formLink, sheetLink });
     localStorage.setItem("teacherQuizzes", JSON.stringify(quizzes));
 
     // Mark quiz as uploaded for student progress page
     localStorage.setItem("quizUploaded", "true");
 
+    // Reset form
     titleInput.value = "";
-    linkInput.value = "";
+    formLinkInput.value = "";
+    sheetLinkInput.value = "";
     statusMsg.style.color = "green";
     statusMsg.textContent = "✅ Uploaded successfully!";
     loadQuizzes();

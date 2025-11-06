@@ -11,11 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const quiz = quizzes[0]; // assuming one quiz at a time
+
+  // 🧩 Determine which link to show:
+  // If teacher saved a "sheetLink" along with the quiz, use that.
+  // Otherwise, fallback to quiz.link.
+  const sheetLink = quiz.sheetLink || quiz.link;
+
   const box = document.createElement("div");
   box.classList.add("dashboard-box");
   box.innerHTML = `
     <h3><p style="color:black;font-size:18px;">${quiz.title}</p></h3>
-    <p>Access submissions: <a href="${quiz.link}" target="_blank">Open Google Sheet</a></p>
+    <p>Access submissions: 
+      <a href="${sheetLink}" target="_blank">Open Google Sheet</a>
+    </p>
     <button class="share-btn" style="
       background-color: #1d8560ff; 
       color: white; 
@@ -45,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: quiz.title,
       score: "Score not tracked",
       date: new Date().toLocaleString(),
-      link: quiz.link
+      link: sheetLink
     };
     const updatedReports = sharedReports.filter(r => r.title !== quiz.title);
     updatedReports.push(report);
